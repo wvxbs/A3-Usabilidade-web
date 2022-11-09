@@ -22,9 +22,9 @@ const Form1 = () => {
     }
 
      return (
-        <div className="mb-3">
+        <div className="mb-5">
             <label className="form-label">Nome</label>
-            <input type="text" className="form-control" placeholder="nome" 
+            <input type="text" className="form-control mb-3" placeholder="nome" 
                 onChange={e => {
                     setForm({
                         ...form,
@@ -33,7 +33,7 @@ const Form1 = () => {
                 }}
             />
             <label className="form-label">Email</label>
-            <input type="text" className="form-control" placeholder="exemplo@email.com" 
+            <input type="text" className="form-control mb-3" placeholder="exemplo@email.com" 
                 onChange={e => {
                     setForm({
                         ...form,
@@ -42,7 +42,7 @@ const Form1 = () => {
                 }}
             />
             <label className="form-label">Senha</label>
-            <input type="password" className="form-control" placeholder="..." 
+            <input type="password" className="form-control mb-3" placeholder="..." 
                 onChange={e => {
                     setForm({
                         ...form,
@@ -50,7 +50,7 @@ const Form1 = () => {
                     })
                 }}
             />
-            <button className="btn btn-dark" onClick={Register}>Cadastrar</button>
+            <button className="btn btn-primary" onClick={Register}>Cadastrar</button>
         </div>
     )
 }

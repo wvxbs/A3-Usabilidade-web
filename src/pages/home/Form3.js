@@ -3,13 +3,14 @@ import { useState } from "react"
 const Form3 = () => {
 
     const [form, setForm] = useState({
-        example1: '',
-        example2: '',
-        example3: ''
+        example1: "",
+        example2: "",
+        example3: ""
       })
 
     const Register = () => {
-        console.log(form)
+        if(ValidateForm)
+            console.log(form)
     }
 
     const ValidateForm = () => {
@@ -21,9 +22,9 @@ const Form3 = () => {
     }
 
      return (
-        <div className="mb-3">
+        <div className="mb-5">
             <label className="form-label">Nome</label>
-            <input type="text" className="form-control" placeholder="nome" 
+            <input type="text" className="form-control mb-3" placeholder="nome" 
                 onChange={e => {
                     setForm({
                         ...form,
@@ -32,7 +33,7 @@ const Form3 = () => {
                 }}
             />
             <label className="form-label">Email</label>
-            <input type="text" className="form-control" placeholder="exemplo@email.com" 
+            <input type="text" className="form-control mb-3" placeholder="exemplo@email.com" 
                 onChange={e => {
                     setForm({
                         ...form,
@@ -41,7 +42,7 @@ const Form3 = () => {
                 }}
             />
             <label className="form-label">Senha</label>
-            <input type="password" className="form-control" placeholder="..." 
+            <input type="password" className="form-control mb-3" placeholder="..." 
                 onChange={e => {
                     setForm({
                         ...form,
@@ -49,7 +50,7 @@ const Form3 = () => {
                     })
                 }}
             />
-            <button className="btn btn-dark" onClick={Register}>Cadastrar</button>
+            <button className="btn btn-danger" onClick={Register}>Cadastrar</button>
         </div>
     )
 }

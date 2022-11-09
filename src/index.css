@@ -8,3 +8,13 @@ body {
   color: white;
   background-color: #282C34;
 }
+
+.form-label {
+  font-weight: bold;
+}
+
+.form-control {
+  background-color: #212529;
+  color: grey;
+  border: 1px solid black;
+}
