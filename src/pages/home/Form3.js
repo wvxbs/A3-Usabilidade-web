@@ -22,7 +22,8 @@ const Form3 = () => {
     }
 
      return (
-        <div className="mb-5">
+        <div className="mb-5 col-md">
+            <h2>Form3</h2>
             <label className="form-label">Nome</label>
             <input type="text" className="form-control mb-3" placeholder="nome" 
                 onChange={e => {

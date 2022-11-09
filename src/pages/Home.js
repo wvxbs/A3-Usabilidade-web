@@ -9,9 +9,11 @@ function Home() {
         <Header />
         <div className="container">
           <h1>Cadastro</h1>
+          <div className="row">
           <Form1 />
           <Form2 />
           <Form3 />
+          </div>
         </div>
       </div>
     );
