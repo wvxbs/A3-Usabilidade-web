@@ -8,6 +8,18 @@ const Form2 = () => {
         example3: ''
       })
 
+    const Register = () => {
+        console.log(form)
+    }
+
+    const ValidateForm = () => {
+        if(form.example1 === "") return false
+        if(form.example2 === "") return false
+        if(form.example3 === "") return false
+        
+        return true
+    }
+
      return (
         <div className="mb-3">
             <label className="form-label">Nome</label>
@@ -37,6 +49,7 @@ const Form2 = () => {
                     })
                 }}
             />
+            <button className="btn btn-dark" onClick={Register}>Cadastrar</button>
         </div>
     )
 }
