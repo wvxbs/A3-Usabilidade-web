@@ -5,7 +5,7 @@ function Detail() {
       <div className="App">
         <Header />
         <div className="container">
-          
+          <h1>Detail</h1>
         </div>
       </div>
     );

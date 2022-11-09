@@ -12,7 +12,7 @@ const App = () => {
       errorElement: <ErrorPage />,
     },
     {
-      path: "/link",
+      path: "/detail",
       element: <Detail />,
     },
   ]);
