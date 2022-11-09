@@ -1,6 +1,6 @@
 const Header = props => {
     return (
-        <nav className="navbar navbar-expand-lg bg-white">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container">
                 <a className="navbar-brand" href="#">A3</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

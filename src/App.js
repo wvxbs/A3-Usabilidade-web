@@ -1,9 +1,24 @@
-import Home from './app/Home';
-import logo from './logo.svg';
+import Home from './pages/Home';
+import { createBrowserRouter,RouterProvider,Route, } from "react-router-dom";
+import Detail from './pages/Detail';
+import ErrorPage from './pages/ErrorPage';
 
-function App() {
+const App = () => {
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/link",
+      element: <Detail />,
+    },
+  ]);
+
   return (
-    <Home />
+    <RouterProvider router={router} />
   );
 }
 
