@@ -2,51 +2,60 @@ import { useState } from "react"
 
 const Form1 = () => {
 
-    const [form, setForm] = useState({
+    const [FormData, setFormData] = useState({
         example1: "",
         example2: "",
         example3: ""
       })
 
     const Register = () => {
-        if(ValidateForm)
-            console.log(form)
+        console.log(FormData)
+        if(ValidateForm) {
+            fetch("http://localhost:4040" + "/api/person/new", {
+                method: 'POST',
+                mode: 'cors',
+                body: JSON.stringify(FormData)
+            }).catch(e => {
+                alert('Cant complete request' + e.message); 
+            })
+        }
+        else 
+            alert('Error')
     }
 
     const ValidateForm = () => {
-        if(form.example1 === "") return false
-        if(form.example2 === "") return false
-        if(form.example3 === "") return false
+        if(FormData.example1 === "") return false
+        if(FormData.example2 === "") return false
+        if(FormData.example3 === "") return false
         
         return true
     }
 
      return (
         <div className="mb-5 col-md">
-            <h2>Form1</h2>
             <label className="form-label">Nome</label>
             <input type="text" className="form-control mb-3" placeholder="nome" 
                 onChange={e => {
-                    setForm({
-                        ...form,
+                    setFormData({
+                        ...FormData,
                         example1: e.target.value
                     })
                 }}
             />
-            <label className="form-label">Email</label>
+            <label className="form-label">Titulo</label>
             <input type="text" className="form-control mb-3" placeholder="exemplo@email.com" 
                 onChange={e => {
-                    setForm({
-                        ...form,
+                    setFormData({
+                        ...FormData,
                         example2: e.target.value
                     })
                 }}
             />
-            <label className="form-label">Senha</label>
-            <input type="password" className="form-control mb-3" placeholder="..." 
+            <label className="form-label">Foto</label>
+            <input type="text" className="form-control mb-3" placeholder="..." 
                 onChange={e => {
-                    setForm({
-                        ...form,
+                    setFormData({
+                        ...FormData,
                         example3: e.target.value
                     })
                 }}
