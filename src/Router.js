@@ -2,6 +2,7 @@ import Registration from './pages/Registration';
 import { createBrowserRouter,RouterProvider,Route, } from "react-router-dom";
 import Detail from './pages/Detail';
 import ErrorPage from './pages/ErrorPage';
+import SearchResult from './pages/SearchResult';
 
 const App = () => {
 
@@ -14,6 +15,10 @@ const App = () => {
     {
       path: "/registration",
       element: <Registration />,
+    },
+    {
+      path: "/search",
+      element: <SearchResult />,
     },
   ]);
 

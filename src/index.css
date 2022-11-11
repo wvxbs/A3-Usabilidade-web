@@ -22,3 +22,8 @@ h1{
   color: grey;
   border: 1px solid black;
 }
+
+.custom-search {
+  background-color: #282c34;
+  border: 0px solid black;
+}
