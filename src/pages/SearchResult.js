@@ -1,11 +1,17 @@
+import { useSearchParams } from 'react-router-dom';
 import Header from "../components/Header";
 
-const SearchResult = props => {
+const SearchResult = () => {
+    const [searchParams] = useSearchParams()
+
     return (
         <div>
             <Header />
             <div className="container">
                 <h1 className="title">Resultados:</h1>
+                <p>
+                    {searchParams.get('query')}
+                </p>
             </div>
         </div>
     )

@@ -1,4 +1,5 @@
 import { Link, NavLink } from "react-router-dom"
+import Searchbox from "./Searchbox"
 
 const Header = props => {
     return (
@@ -17,10 +18,7 @@ const Header = props => {
                         <NavLink to="/registration" className={() => {return ({ isActive }) => isActive ? "active" : undefined, "nav-link"}}>Cadastro</NavLink>
                         </li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control custom-search mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar" />
-                    </form>
-                    <Link to="/search" class="btn btn-outline-light my-2 my-sm-0" >Buscar</Link>
+                    <Searchbox />
                 </div>
             </div>
         </nav>
