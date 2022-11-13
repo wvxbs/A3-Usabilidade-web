@@ -3,36 +3,32 @@ import { useState } from "react"
 const Form1 = () => {
 
     const [FormData, setFormData] = useState({
-        example1: "",
-        example2: "",
-        example3: ""
+        name: "",
+        age: "",
+        reason: "",
+        link: ""
       })
+
+    const handleSubmit = event => {
+        event.preventDefault()
+        Register()
+    }
+    
 
     const Register = () => {
         console.log(FormData)
-        if(ValidateForm) {
-            fetch("http://localhost:4040" + "/api/person/new", {
-                method: 'POST',
-                mode: 'cors',
-                body: JSON.stringify(FormData)
-            }).catch(e => {
-                alert('Cant complete request' + e.message); 
-            })
-        }
-        else 
-            alert('Error')
+        fetch("http://localhost:4040" + "/api/person/new", {
+            method: 'POST',
+            mode: 'cors',
+            body: JSON.stringify(FormData)
+        }).catch(e => {
+            alert('Cant complete request' + e.message); 
+        })
     }
 
-    const ValidateForm = () => {
-        if(FormData.example1 === "") return false
-        if(FormData.example2 === "") return false
-        if(FormData.example3 === "") return false
-        
-        return true
-    }
 
      return (
-        <div className="mb-5 col-md">
+        <form className="mb-5 col-md" onSubmit={handleSubmit}>
             <label className="form-label">Nome</label>
             <input type="text" className="form-control mb-3" placeholder="nome" 
                 onChange={e => {
@@ -42,7 +38,7 @@ const Form1 = () => {
                     })
                 }}
             />
-            <label className="form-label">Titulo</label>
+            <label className="form-label">Idade</label>
             <input type="text" className="form-control mb-3" placeholder="exemplo@email.com" 
                 onChange={e => {
                     setFormData({
@@ -51,7 +47,7 @@ const Form1 = () => {
                     })
                 }}
             />
-            <label className="form-label">Foto</label>
+            <label className="form-label">Motivo do cancelamento</label>
             <input type="text" className="form-control mb-3" placeholder="..." 
                 onChange={e => {
                     setFormData({
@@ -60,8 +56,17 @@ const Form1 = () => {
                     })
                 }}
             />
-            <button className="btn btn-primary" onClick={Register}>Cadastrar</button>
-        </div>
+            <label className="form-label">Link</label>
+            <input type="text" className="form-control mb-3" placeholder="..." 
+                onChange={e => {
+                    setFormData({
+                        ...FormData,
+                        example3: e.target.value
+                    })
+                }}
+            />
+            <input type="submit" className="btn btn-primary" value="Cadastrar" />
+        </form>
     )
 }
 export default Form1

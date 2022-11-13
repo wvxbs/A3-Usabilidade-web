@@ -1,6 +1,6 @@
 import Registration from './pages/Registration';
 import { createBrowserRouter,RouterProvider,Route, } from "react-router-dom";
-import Detail from './pages/Detail';
+import Home from './pages/Home';
 import ErrorPage from './pages/ErrorPage';
 import SearchResult from './pages/SearchResult';
 
@@ -9,7 +9,7 @@ const App = () => {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Detail />,
+      element: <Home />,
       errorElement: <ErrorPage />,
     },
     {
