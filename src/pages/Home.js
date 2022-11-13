@@ -4,25 +4,25 @@ import Header from "../components/Header";
 
 function Home() {
 
-    const [CardData, setCardData] = useState({})
+    const [CardData, setCardData] = useState([{}])
 
-    const RenderCards = () => {
-      return (
+    const RenderCards = () => (
+      CardData.map(e => (
         <div className="col-md">
           <Card   
-            img={""}
-            name={""}
-            summary={""}
+            img={e.img}
+            name={e.name}
+            summary={e.summary}
           />
-        </div>
-      )
-    }
+      </div>
+      ))
+    )
 
     return (
       <div className="App">
         <Header />
         <div className="container">
-          <h1></h1>
+          <h1 className="title mb-3">Cancelados do mês:</h1>
           <div className="row row-cols-1 row-cols-md-2 g-4">
             {RenderCards()}            
           </div>

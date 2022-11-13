@@ -6,7 +6,7 @@ function Registration() {
       <div className="App">
         <Header />
         <div className="container">
-          <h1>Cadastro</h1>
+          <h1 className="title mb-3">Cadastro</h1>
           <div className="row">
           <Form />
           </div>

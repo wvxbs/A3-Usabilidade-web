@@ -8,7 +8,7 @@ const SearchResult = () => {
         <div>
             <Header />
             <div className="container">
-                <h1 className="title">Resultados:</h1>
+                <h1 className="title mb-3">Resultados:</h1>
                 <p>
                     {searchParams.get('query')}
                 </p>
