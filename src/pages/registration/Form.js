@@ -3,11 +3,12 @@ import { useState } from "react"
 const Form1 = () => {
 
     const [FormData, setFormData] = useState({
-        name: "",
-        age: "",
-        summary: "",
-        link: ""
-      })
+        "name": "",
+        "age": "",
+        "summary": "",
+        "link": "",
+        "img": "",
+        })
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -17,8 +18,10 @@ const Form1 = () => {
 
     const Register = () => {
         console.log(FormData)
-        fetch("http://localhost:4040" + "/api/person/new", {
+        fetch(process.env.API_URL + "/api/person/new", {
+            crossDomain:true,
             method: 'POST',
+            headers: {'Content-Type':'application/json'},
             mode: 'cors',
             body: JSON.stringify(FormData)
         }).catch(e => {
@@ -34,7 +37,7 @@ const Form1 = () => {
                 onChange={e => {
                     setFormData({
                         ...FormData,
-                        example1: e.target.value
+                        name: e.target.value
                     })
                 }}
             />
@@ -43,7 +46,7 @@ const Form1 = () => {
                 onChange={e => {
                     setFormData({
                         ...FormData,
-                        example2: e.target.value
+                        age: e.target.value
                     })
                 }}
             />
@@ -52,7 +55,7 @@ const Form1 = () => {
                 onChange={e => {
                     setFormData({
                         ...FormData,
-                        example3: e.target.value
+                        summary: e.target.value
                     })
                 }}
             />
@@ -61,7 +64,16 @@ const Form1 = () => {
                 onChange={e => {
                     setFormData({
                         ...FormData,
-                        example3: e.target.value
+                        link: e.target.value
+                    })
+                }}
+            />
+            <label className="form-label">Image</label>
+            <input type="text" className="form-control mb-3" placeholder="..." 
+                onChange={e => {
+                    setFormData({
+                        ...FormData,
+                        img: e.target.value
                     })
                 }}
             />

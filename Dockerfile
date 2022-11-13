@@ -1,5 +1,6 @@
 FROM node:lts-alpine
 ENV NODE_ENV=production
+ENV API_URL=""
 WORKDIR /app
 COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
 RUN npm install --production --silent && mv node_modules ../
