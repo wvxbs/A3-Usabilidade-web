@@ -8,7 +8,18 @@ const SearchResult = () => {
     const [Loading, setLoading] = useState(true)
 
     if (Loading) {
-        return <Loader />
+        return (
+            <div>
+                <Header />
+                <div className="container">
+                    <h1 className="title mb-3">Resultados:</h1>
+                    <p>
+                        {searchParams.get('query')}
+                    </p>
+                    <Loader />
+                </div>
+            </div>
+        )
     }
     else {
         return (

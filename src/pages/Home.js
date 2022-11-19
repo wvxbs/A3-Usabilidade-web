@@ -59,7 +59,14 @@ const Home = () => {
   } 
     
   if(Loading) {
-    return <Loader />
+    return (
+      <div className="App">
+      <Header />
+      <div className="container">
+        <Loader />
+      </div>
+    </div>
+    )
   }
   else {
     return (
