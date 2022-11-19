@@ -4,7 +4,7 @@ const MissingData = props => {
             <h1 className="title display-1">
                 {props.title}
             </h1>
-            <p>:{":("}</p>
+            <p>{":("}</p>
         </div>
     )
 }
