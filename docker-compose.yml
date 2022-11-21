@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   web:
-    image: a3-usabilidade-web
+    image: wvxbs/a3-usabilidade-web:latest
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -14,3 +14,20 @@ services:
       - 3000:3000
     volumes:
       - .:/app
+    restart: on-failure
+
+  api:
+    image: wvxbs/a3-usabilidade-server:latest
+    ports: 
+      - 4040:4040
+    volumes: 
+      - .:/server
+    restart: on-failure
+
+  nginx:
+    build: ./nginx
+    ports:
+    - '80:80'
+    depends_on:
+    - web
+    - api
