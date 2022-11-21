@@ -1,11 +1,11 @@
 FROM node:lts-alpine
 ENV NODE_ENV=production
-ENV API_URL=""
+ENV PORT=${PORT}
 WORKDIR /app
 COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
 RUN npm install --production --silent && mv node_modules ../
 COPY . .
-EXPOSE 3000
+EXPOSE ${PORT}
 RUN chown -R node /app
 USER node
 CMD ["npm", "start"]
