@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const Form = () => {
 
@@ -9,20 +10,34 @@ const Form = () => {
         link: "",
         img : ""
     })
-    
+
+    const [Loading, setLoding] = useState(false)
+
+    const navigate = useNavigate(); 
 
     const handleSubmit = event => {
         event.preventDefault()
-
-        console.log(process.env.REACT_APP_API_URL)
-
         console.log(FormData)
+        PostFormData()
+        RedirectToHome(event)
+    }
+
+    const RedirectToHome = event => {
+        event.preventDefault()
+        
+        return navigate("/")
+    }
+
+    const PostFormData = () => {
         fetch(process.env.REACT_APP_API_URL, {
-            crossDomain:true,
             method: 'POST',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify(FormData)
-        }).catch(e => {
+        })
+        .then(() => {
+            alert('Cancelado cadastrado com sucesso!')
+        })
+        .catch(e => {
             alert('Cant complete request' + e.message); 
         })
     }

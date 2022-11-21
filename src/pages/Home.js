@@ -21,30 +21,34 @@ const Home = () => {
       })
       .then(res => {
         setCardData(res.json())
+        setLoading(false)
       })
-      .then(result => console.log(result                                                                                                                                                                                                                                            ))
+      .then(result => {
+        console.log(result)
+        setLoading(false)
+      })
       .catch(error => {
-        setDataIsMissing(true)
-      })  
-      setDataIsMissing(false)
+        console.log(error)
+        setLoading(false)
+      }) 
     }
 
-    const RenderCards = () => {
-      let cardData = CardData 
+    const RenderCards = () => { 
       return (
-      cardData.foreach(e => (
-        <div className="col-md">
-          <Card   
-            img={e.img}
-            name={e.name}
-            summary={e.summary}
-          />
-      </div>))
+        CardData.foreach(e => (
+          <div className="col-md">
+            <Card   
+              img={e.img}
+              name={e.name}
+              summary={e.summary}
+            />
+        </div>
+        ))
       )
     }
 
     const VerifyIfDataIsMissing = () => {
-      if (!DataIsMissing) 
+      if (!CardData === undefined) 
         return (
           <div>
             <h1 className="title mb-3">Cancelados do mês:</h1>
