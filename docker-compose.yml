@@ -11,23 +11,7 @@ services:
     env_file:
      - .env
     ports:
-      - 3000:3000
+      - ${REACT_APP_PORT}:${REACT_APP_PORT}
     volumes:
       - .:/app
     restart: on-failure
-
-  api:
-    image: wvxbs/a3-usabilidade-server:latest
-    ports: 
-      - 4040:4040
-    volumes: 
-      - .:/server
-    restart: on-failure
-
-  nginx:
-    build: ./nginx
-    ports:
-    - '80:80'
-    depends_on:
-    - web
-    - api

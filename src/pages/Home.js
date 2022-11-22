@@ -12,20 +12,20 @@ const Home = () => {
 
     useEffect(() => {
       FetchPersons()
-    })
+    }, [])
 
     const FetchPersons = () => {
-      fetch(process.env.REACT_APP_API_URL, {
+      fetch(process.env.REACT_APP_API_URL + "/person", {
         method: 'GET',
         redirect: 'follow'
       })
-      .then(res => {
-        setCardData(res.json())
-        setLoading(false)
-      })
+      .then(res => res.json())
       .then(result => {
-        console.log(result)
-        setLoading(false)
+        if(ValidateCardData(result)) {
+          setCardData(result)
+          setLoading(false)
+          setDataIsMissing(false)
+        }
       })
       .catch(error => {
         console.log(error)
@@ -33,11 +33,19 @@ const Home = () => {
       }) 
     }
 
+    const ValidateCardData = (res) => {
+      if(res === []) return false
+      if(res === undefined) return false
+
+      return true
+    }
+
     const RenderCards = () => { 
       return (
-        CardData.foreach(e => (
+        CardData.map(e => (
           <div className="col-md">
             <Card   
+              id={e._id}
               img={e.img}
               name={e.name}
               summary={e.summary}
@@ -48,7 +56,7 @@ const Home = () => {
     }
 
     const VerifyIfDataIsMissing = () => {
-      if (!CardData === undefined) 
+      if (!DataIsMissing) 
         return (
           <div>
             <h1 className="title mb-3">Cancelados do mês:</h1>

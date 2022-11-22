@@ -4,32 +4,23 @@ import { useNavigate } from "react-router-dom"
 const Form = () => {
 
     const [FormData, setFormData] = useState({
-        name : "",
-        age : "",
-        summary : "",
-        link: "",
-        img : ""
+        "name" : undefined,
+        "age" : undefined,
+        "summary" : undefined,
+        "link": undefined,
+        "img" : undefined
     })
 
-    const [Loading, setLoding] = useState(false)
-
-    const navigate = useNavigate(); 
+    const navigate = useNavigate() 
 
     const handleSubmit = event => {
         event.preventDefault()
-        console.log(FormData)
         PostFormData()
-        RedirectToHome(event)
-    }
-
-    const RedirectToHome = event => {
-        event.preventDefault()
-        
         return navigate("/")
     }
 
     const PostFormData = () => {
-        fetch(process.env.REACT_APP_API_URL, {
+        fetch(process.env.REACT_APP_API_URL + "/person", {
             method: 'POST',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify(FormData)
@@ -38,7 +29,7 @@ const Form = () => {
             alert('Cancelado cadastrado com sucesso!')
         })
         .catch(e => {
-            alert('Cant complete request' + e.message); 
+            alert('Requisição malsucedida ' + e.message) 
         })
     }
 
