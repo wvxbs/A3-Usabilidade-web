@@ -23,12 +23,12 @@ const Home = () => {
       .then(result => {
         if(ValidateCardData(result)) {
           setCardData(result)
-          setLoading(false)
           setDataIsMissing(false)
         }
+        setLoading(false)
       })
       .catch(error => {
-        console.log(error)
+        alert(error)
         setLoading(false)
       }) 
     }
@@ -56,18 +56,14 @@ const Home = () => {
     }
 
     const VerifyIfDataIsMissing = () => {
-      if (!DataIsMissing) 
-        return (
-          <div>
-            <h1 className="title mb-3">Cancelados do mês:</h1>
-            <div className="row row-cols-1 row-cols-md-2 g-4">
-              {RenderCards()}
-            </div>
-          </div>
-        ) 
-        else {
-      return <MissingData title="Nenhuma pessoa cadastrada"/>
-    }
+      if (DataIsMissing) 
+        return <MissingData title="Nenhuma pessoa cadastrada"/>
+      
+      return (
+        <div className="row row-cols-1 row-cols-md-2 g-4">
+          {RenderCards()}
+        </div>
+      )
   } 
     
   if(Loading) {
@@ -85,6 +81,7 @@ const Home = () => {
       <div className="App">
         <Header />
         <div className="container">
+          <h1 className="title mb-3">Cancelados:</h1>
           {VerifyIfDataIsMissing()} 
         </div>
       </div>

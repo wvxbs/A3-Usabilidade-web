@@ -16,7 +16,6 @@ const Form = () => {
     const handleSubmit = event => {
         event.preventDefault()
         PostFormData()
-        return navigate("/")
     }
 
     const PostFormData = () => {
@@ -27,6 +26,7 @@ const Form = () => {
         })
         .then(() => {
             alert('Cancelado cadastrado com sucesso!')
+            return navigate("/")
         })
         .catch(e => {
             alert('Requisição malsucedida ' + e.message) 
