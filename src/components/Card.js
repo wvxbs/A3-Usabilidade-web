@@ -1,32 +1,34 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const Card = props => {
 
-    const [Status, setStatus] = useState("")
-    const [ErrorMessage, setErrorMessage] = useState("")
-
-    const handleSubmit = event => {
-        event.preventDefault()  
+    const navigate = useNavigate() 
+    
+    const handleclick = event => {
+        event.preventDefault()
+        DeletePerson()
     }
 
     const DeletePerson = () => {
-        fetch(process.env.REACT_APP_API_URL + "/person", { 
-            method: 'DELETE' 
-        })
-        .then(async rest => {
-            const data = await rest.json();
-            if (!rest.ok) {
-                const error = (data && data.message) || rest.status;
-                return Promise.reject(error);
-            }
+        const id = props.id
 
-            setStatus('Delete successful');
+        fetch(process.env.REACT_APP_API_URL + "/person/delete?id=" + id, {
+            method: 'DELETE',
+            mode : 'cors'
         })
-        .catch(error => {
-            setErrorMessage(error);
-            console.error('There was an error!', error);
-        });
+        .then(res => {
+            console.log(res)
+
+            if(!res.ok) throw new Error('Algo deu errado')
+              
+            navigate("/")
+        })
+        .catch(error =>{
+            console.log(error)
+        })
     }
+  
 
     return (
             <div className="card bg-dark">
@@ -34,12 +36,16 @@ const Card = props => {
             <div className="card-body">
                 <h5 className="card-title">{props.name}</h5>
                 <p className="card-text">{props.summary}</p>
-                <a href="#" className="btn btn-primary">Mais informações</a>
             </div>
             <div className="card-footer">
-                <form onSubmit={handleSubmit}>
-                    <input className="btn btn-danger" value="Apagar"/>
-                </form>
+                <div class="btn-group" role="group">
+                    <button className="btn btn-danger" onClick={handleclick}>
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                    <a href={props.link} className="btn btn-success">
+                        <i class="fa-solid fa-link"></i>
+                    </a>
+                </div>
             </div>
         </div>
     )

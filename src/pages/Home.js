@@ -45,9 +45,11 @@ const Home = () => {
         CardData.map(e => (
           <div className="col-md">
             <Card   
+              key={e._id}
               id={e._id}
               img={e.img}
               name={e.name}
+              link={e.link}
               summary={e.summary}
             />
         </div>
@@ -89,4 +91,4 @@ const Home = () => {
   }
 }
   
-  export default Home
+export default Home

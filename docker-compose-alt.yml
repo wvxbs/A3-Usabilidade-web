@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  web:
+    image: wvxbs/a3-usabilidade-web:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: development
+    env_file:
+     - .env
+    ports:
+      - ${REACT_APP_PORT}:${REACT_APP_PORT}
+    volumes:
+      - .:/app
+    restart: on-failure
