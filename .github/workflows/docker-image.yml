@@ -26,7 +26,7 @@ jobs:
       run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD      
       
     - name: Build the docker image
-      run: docker-compose build
+      run: docker build -t wvxbs/a3-usabilidade-web:latest .
       
     - name: Docker push
-      run: docker push wvxbs/a3-usabilidade-web:latest
+      run: docker push wvxbs/a3-usabilidade-web
