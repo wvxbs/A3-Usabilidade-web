@@ -35,3 +35,10 @@ services:
       - '27017:27017'
     volumes:
       - ./data/db:/data/db
+    restart: on-failure
+
+  nginx:
+    build: ./nginx
+    ports:
+    - '80:80'
+    restart: on-failure
