@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom"
 const Form = () => {
 
     const [FormData, setFormData] = useState({
-        "name" : undefined,
-        "age" : undefined,
-        "summary" : undefined,
-        "link": undefined,
-        "img" : undefined
+        "name" : null,
+        "age" : null,
+        "summary" : null,
+        "link": "",
+        "img" : null
     })
 
     const navigate = useNavigate() 
@@ -45,7 +45,7 @@ const Form = () => {
                 }}
             />
             <label className="form-label">Idade</label>
-            <input type="text" required className="form-control mb-3" value={FormData.age} placeholder="exemplo@email.com" 
+            <input type="number" required className="form-control mb-3" value={FormData.age} placeholder="exemplo@email.com" 
                 onChange={e => {
                     setFormData({
                         ...FormData,
@@ -63,7 +63,7 @@ const Form = () => {
                 }}
             />
             <label className="form-label">Link</label>
-            <input type="text" required className="form-control mb-3" value={FormData.link} placeholder="..." 
+            <input type="url" required className="form-control mb-3" value={FormData.link} placeholder="..." 
                 onChange={e => {
                     setFormData({
                         ...FormData,
@@ -71,8 +71,8 @@ const Form = () => {
                     })
                 }}
             />
-            <label className="form-label">Image</label>
-            <input type="text" required className="form-control mb-3" value={FormData.img} placeholder="..." 
+            <label className="form-label">Foto de perfil</label>
+            <input type="file" required className="form-control mb-3" value={FormData.img} placeholder="..." 
                 onChange={e => {
                     setFormData({
                         ...FormData,
@@ -80,7 +80,7 @@ const Form = () => {
                     })
                 }}
             />
-            <input type="Submit" className="btn btn-primary" value="Cadastrar" />
+            <input type="submit" className="btn btn-primary" value="Cadastrar" />
         </form>
     )
 }
