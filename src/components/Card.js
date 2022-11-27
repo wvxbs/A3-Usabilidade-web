@@ -28,26 +28,26 @@ const Card = props => {
             console.log(error)
         })
     }
-  
 
     return (
-            <div className="card bg-dark">
-            <img src={props.img} className="card-img-top" alt="profile pic" />
-            <div className="card-body">
-                <h5 className="card-title">{props.name}</h5>
-                <p className="card-text">{props.summary}</p>
-            </div>
-            <div className="card-footer">
-                <div class="btn-group" role="group">
-                    <button className="btn btn-danger" onClick={handleclick}>
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                    <a href={props.link} className="btn btn-success">
-                        <i class="fa-solid fa-link"></i>
-                    </a>
-                </div>
+        <div className="card bg-dark">
+        <div className="card-header">
+            <h5 className="card-title">{props.name}</h5>
+        </div>
+        <div className="card-body">
+            <p className="card-text">{props.summary}</p>
+        </div>
+        <div className="card-footer">
+            <div class="btn-group" role="group">
+                <button className="btn btn-danger" onClick={handleclick}>
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+                <a href={props.link} className="btn btn-success">
+                    <i class="fa-solid fa-link"></i>
+                </a>
             </div>
         </div>
+    </div>
     )
 }
 

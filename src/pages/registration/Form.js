@@ -7,8 +7,7 @@ const Form = () => {
         "name" : null,
         "age" : null,
         "summary" : null,
-        "link": "",
-        "img" : null
+        "link": null,
     })
 
     const navigate = useNavigate() 
@@ -68,15 +67,6 @@ const Form = () => {
                     setFormData({
                         ...FormData,
                         link: e.target.value
-                    })
-                }}
-            />
-            <label className="form-label">Foto de perfil</label>
-            <input type="file" required className="form-control mb-3" value={FormData.img} placeholder="..." 
-                onChange={e => {
-                    setFormData({
-                        ...FormData,
-                        img: e.target.value
                     })
                 }}
             />
