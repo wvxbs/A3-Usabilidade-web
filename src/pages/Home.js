@@ -45,10 +45,10 @@ const Home = () => {
         CardData.map(e => (
           <div className="col-md">
             <Card   
-              key={e._id}
               id={e._id}
               img={e.img}
               name={e.name}
+              age={e.age}
               link={e.link}
               summary={e.summary}
             />
