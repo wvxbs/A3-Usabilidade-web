@@ -6,7 +6,7 @@ import MissingData from "../components/MissingData"
 
 const Home = () => { 
 
-    const [CardData, setCardData] = useState(undefined)
+    const [CardData, setCardData] = useState([])
     const [DataIsMissing, setDataIsMissing] = useState(true)
     const [Loading, setLoading] = useState(true)
 
@@ -28,9 +28,18 @@ const Home = () => {
         setLoading(false)
       })
       .catch(error => {
-        alert(error)
         setLoading(false)
       }) 
+    }
+
+    const RenderCards = () => { 
+      return (
+        CardData.map(e => (
+          <div className="col-md">
+            <Card data={e} />
+        </div>
+        ))
+      )
     }
 
     const ValidateCardData = (res) => {
@@ -40,32 +49,22 @@ const Home = () => {
       return true
     }
 
-    const RenderCards = () => { 
-      return (
-        CardData.map(e => (
-          <div className="col-md">
-            <Card   
-              id={e._id}
-              img={e.img}
-              name={e.name}
-              age={e.age}
-              link={e.link}
-              summary={e.summary}
-            />
-        </div>
-        ))
-      )
-    }
+
 
     const VerifyIfDataIsMissing = () => {
       if (DataIsMissing) 
         return <MissingData title="Nenhuma pessoa cadastrada"/>
-      
+
+      if (CardData.length === 0) 
+        return <MissingData title="Nenhuma pessoa cadastrada"/>
+
+      else {
       return (
         <div className="row row-cols-1 row-cols-md-2 g-4">
           {RenderCards()}
         </div>
       )
+    }
   } 
     
   if(Loading) {
