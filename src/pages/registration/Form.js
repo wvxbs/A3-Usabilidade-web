@@ -44,7 +44,7 @@ const Form = () => {
                 }}
             />
             <label className="form-label">Idade</label>
-            <input type="number" required className="form-control mb-3" value={FormData.age} placeholder="exemplo@email.com" 
+            <input type="number" required className="form-control mb-3" value={FormData.age} placeholder="69" 
                 onChange={e => {
                     setFormData({
                         ...FormData,
@@ -53,7 +53,7 @@ const Form = () => {
                 }}
             />
             <label className="form-label">Motivo do cancelamento</label>
-            <input type="text" required className="form-control mb-3" value={FormData.summary} placeholder="..." 
+            <input type="text" required className="form-control mb-3" value={FormData.summary} placeholder="Crimes contra a humanidade" 
                 onChange={e => {
                     setFormData({
                         ...FormData,
@@ -62,7 +62,7 @@ const Form = () => {
                 }}
             />
             <label className="form-label">Link</label>
-            <input type="url" required className="form-control mb-3" value={FormData.link} placeholder="..." 
+            <input type="url" required className="form-control mb-3" value={FormData.link} placeholder="https://google.com" 
                 onChange={e => {
                     setFormData({
                         ...FormData,
