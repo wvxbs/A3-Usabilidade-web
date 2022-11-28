@@ -35,7 +35,7 @@ const Form = () => {
      return (
         <form className="mb-5 col-md" onSubmit={handleSubmit}>
             <label className="form-label">Nome</label>
-            <input type="text" required className="form-control mb-3" value={FormData.name} placeholder="nome" 
+            <input type="text" required className="form-control mb-3" value={FormData.name} placeholder="Nome" 
                 onChange={e => {
                     setFormData({
                         ...FormData,
