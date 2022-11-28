@@ -24,8 +24,6 @@ services:
      - .env
     ports:
       - ${API_PORT}:${API_PORT}
-    volumes:
-      - .:/api
     restart: on-failure
 
   db:
