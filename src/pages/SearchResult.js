@@ -96,7 +96,7 @@ const SearchResult = () => {
         <Header />
         <div className="container">
           <h1 className="title mb-3">Cancelados:</h1>
-          {Query}
+          <p className="body">{Query}</p>
           {VerifyIfDataIsMissing()} 
         </div>
       </div>
