@@ -10,11 +10,27 @@ const Form = () => {
         "link": null,
     })
 
+    const [Loading, setLoading] = useState(false)
+
     const navigate = useNavigate() 
 
     const handleSubmit = event => {
         event.preventDefault()
+        setLoading(true)
         PostFormData()
+    }
+
+    const HandleLoading = () => {
+        if (Loading) {
+            return(
+                <button type="submit" className="btn btn-primary" disabled value="Cadastrar"> 
+                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                    <span class="visually-hidden">Cadastrando...</span>
+                </button>
+            )
+        }
+        else 
+            return(<input type="submit" className="btn btn-primary" value="Cadastrar" />)
     }
 
     const PostFormData = () => {
@@ -24,10 +40,12 @@ const Form = () => {
             body: JSON.stringify(FormData)
         })
         .then(() => {
+            setLoading(false)
             alert('Cancelado cadastrado com sucesso!')
             return navigate("/")
         })
         .catch(e => {
+            setLoading(false)
             alert('Requisição malsucedida ' + e.message) 
         })
     }
@@ -70,7 +88,7 @@ const Form = () => {
                     })
                 }}
             />
-            <input type="submit" className="btn btn-primary" value="Cadastrar" />
+            {HandleLoading()}
         </form>
     )
 }
