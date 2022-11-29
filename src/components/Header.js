@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom"
+import { Link } from "react-router-dom"
 import Searchbox from "./Searchbox"
 
 const Header = props => {
@@ -12,10 +12,10 @@ const Header = props => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                        <NavLink to="/" className={() => {return ({ isActive }) => isActive ? "active" : undefined, "nav-link"}}>Cancelados</NavLink>
+                        <Link to="/" className="nav-link">Cancelados</Link>
                         </li>
                         <li className="nav-item">
-                        <NavLink to="/registration" className={() => {return ({ isActive }) => isActive ? "active" : undefined, "nav-link"}}>Cadastro</NavLink>
+                        <Link to="/registration" className="nav-link">Cadastro</Link>
                         </li>
                     </ul>
                     <Searchbox />
