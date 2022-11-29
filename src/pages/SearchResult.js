@@ -8,13 +8,12 @@ import MissingData from "../components/MissingData"
 const SearchResult = () => { 
 
     const [searchParams] = useSearchParams()
-    const [Query, setQuery] = useState(searchParams.get('query'))
+    const [Query, setQuery] = useState(searchParams.get('query').toLowerCase())
     const [CardData, setCardData] = useState([])
     const [DataIsMissing, setDataIsMissing] = useState(true)
     const [Loading, setLoading] = useState(true)
 
     useEffect(() => {
-      setQuery(searchParams.get('query'))
       FetchPersons()
     }, [])
 
