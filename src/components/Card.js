@@ -11,11 +11,10 @@ const Card = props => {
     }
 
     const DeletePerson = () => {
-        const id = props.data.id
+        const id = props.data._id
 
-        fetch(process.env.REACT_APP_API_URL + "/person?id=" + id, {
-            method: 'DELETE',
-            mode : 'cors'
+        fetch(`${process.env.REACT_APP_API_URL}/person/delete?id=${id}`, {
+            method: 'DELETE'
         })
         .then(res => {
             console.log(res)
