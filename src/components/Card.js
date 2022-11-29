@@ -1,9 +1,8 @@
-import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 const Card = props => {
 
-    const navigate = useNavigate() 
+    const navigate = useNavigate()
     
     const handleclick = event => {
         event.preventDefault()
@@ -11,10 +10,9 @@ const Card = props => {
     }
 
     const DeletePerson = () => {
-        const id = props.data._id
-
-        fetch(`${process.env.REACT_APP_API_URL}/person/delete?id=${id}`, {
-            method: 'DELETE'
+        fetch(process.env.REACT_APP_API_URL + "/person/?=id" + props.data._id, {
+            method: 'DELETE',
+            headers: {'Content-Type': 'text/plain'},
         })
         .then(res => {
             console.log(res)
