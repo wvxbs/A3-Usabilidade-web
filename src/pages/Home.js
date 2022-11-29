@@ -15,7 +15,7 @@ const Home = () => {
     }, [])
 
     const FetchPersons = () => {
-      fetch(process.env.REACT_APP_API_URL + "/person", {
+      fetch(`${process.env.REACT_APP_API_URL}/person/`, {
         method: 'GET',
         redirect: 'follow'
       })
@@ -48,8 +48,6 @@ const Home = () => {
 
       return true
     }
-
-
 
     const VerifyIfDataIsMissing = () => {
       if (DataIsMissing) 
